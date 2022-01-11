@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -21,6 +23,19 @@ public class Team {
 	Set<EmplProf> empProf;
 	@OneToMany(mappedBy = "team")
 	Set<EmplTeam> empTeam;
+	@ManyToOne
+	@JoinColumn(name = "idproject")
+	public Project project;
+	
+	
+	public Team() {
+		super();
+		}
+	public Team(Long idteam, String name) {
+		super();
+		this.idteam = idteam;
+		this.name = name;
+	}
 	public Long getIdteam() {
 		return idteam;
 	}
@@ -33,5 +48,12 @@ public class Team {
 	public void setName(String name) {
 		this.name = name;
 	}
+	public Project getProject() {
+		return project;
+	}
+	public void setProject(Project project) {
+		this.project = project;
+	}
+	
 	
 }

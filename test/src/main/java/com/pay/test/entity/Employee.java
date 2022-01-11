@@ -10,6 +10,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.springframework.format.annotation.DateTimeFormat;
 @Entity
 @Table(name = "employee")
 public class Employee {
@@ -20,12 +24,14 @@ public class Employee {
 	private int Age;
 	private String adress;
 	@Column(name = "start_date")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@Temporal(TemporalType.DATE)
 	private Date startDate; 
 	@Column(name = "status_marital")
 	private boolean statusMarital;
 	private int enfant;
 	@OneToMany(mappedBy = "employee")
-	Set<EmplProj> empProj;
+	Set<TimeOff> timeOff;
 	@OneToMany(mappedBy = "employee")
 	Set<EmplProf> empProf;
 	@OneToMany(mappedBy = "employee")

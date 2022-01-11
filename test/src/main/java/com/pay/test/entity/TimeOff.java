@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -21,6 +23,11 @@ public class TimeOff {
 	@Column(name = "end_date")
 	private Date enddate;
 	private String raison;
+	
+	@ManyToOne
+	@JoinColumn(name = "idemployee")
+	private Employee employee;
+	
 	public Long getIdtimeOff() {
 		return idtimeOff;
 	}
