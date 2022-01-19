@@ -11,8 +11,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.pay.test.dao.EmployeeRepository;
+import com.pay.test.dao.ProjectRepository;
 import com.pay.test.dao.TeamRepository;
 import com.pay.test.entity.Employee;
+import com.pay.test.entity.Project;
 import com.pay.test.entity.Team;
 
 @Controller
@@ -22,13 +24,15 @@ public class TeamController {
 	private TeamRepository teamRepo;
 	@Autowired
 	private EmployeeRepository empRepo;
+	@Autowired
+	private ProjectRepository projRepo;
 
 	@GetMapping("/listTeam")
 	public String viewTeamPage(Model model) {
 		List<Team> listTeams = teamRepo.findAll();
 		model.addAttribute("listTeams",listTeams);
-		List<Employee> listEmployees = empRepo.findAll();
-		model.addAttribute("listEmployees", listEmployees);
+		List<Project> listProjects = projRepo.findAll();
+        model.addAttribute("listProjects", listProjects);
 		return "listTeam";
 	}
 	
@@ -37,6 +41,8 @@ public class TeamController {
         // create model attribute to bind form data
     	Team team= new Team();
         model.addAttribute("team", team);
+        List<Project> listProjects = projRepo.findAll();
+        model.addAttribute("listProjects", listProjects);
         return "NewTeam";
 	}
 	
@@ -55,6 +61,8 @@ public class TeamController {
 
         // set team as a model attribute to pre-populate the form
         model.addAttribute("team", team);
+        List<Project> listProjects = projRepo.findAll();
+        model.addAttribute("listProjects", listProjects);
         
         return "NewTeam";
 	}

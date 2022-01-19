@@ -10,29 +10,54 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
-@Table(name = "timeOff")
+@Table(name = "timeoff")
 public class TimeOff {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long idtimeOff;
+	private Long idtimeoff;
 	@Column(name = "start_date")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@Temporal(TemporalType.DATE)
 	private Date startDate;
 	@Column(name = "end_date")
-	private Date enddate;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@Temporal(TemporalType.DATE)
+	private Date endDate;
 	private String raison;
 	
+	
+	public TimeOff() {
+		super();
+	}
+	public TimeOff(Long idtimeoff, Date startDate, Date endDate, String raison, Employee employee, Team team) {
+		super();
+		this.idtimeoff = idtimeoff;
+		this.startDate = startDate;
+		this.endDate = endDate;
+		this.raison = raison;
+		this.employee = employee;
+		this.team = team;
+	}
 	@ManyToOne
 	@JoinColumn(name = "idemployee")
-	private Employee employee;
+	public Employee employee;
+	@ManyToOne
+	@JoinColumn(name = "idteam")
+	public Team team;
+	
 	
 	public Long getIdtimeOff() {
-		return idtimeOff;
+		return idtimeoff;
 	}
 	public void setIdtimeOff(Long idtimeOff) {
-		this.idtimeOff = idtimeOff;
+		this.idtimeoff = idtimeOff;
 	}
 	public Date getStartDate() {
 		return startDate;
@@ -40,11 +65,11 @@ public class TimeOff {
 	public void setStartDate(Date startDate) {
 		this.startDate = startDate;
 	}
-	public Date getEnddate() {
-		return enddate;
+	public Date getEndDate() {
+		return endDate;
 	}
-	public void setEnddate(Date enddate) {
-		this.enddate = enddate;
+	public void setEndDate(Date endDate) {
+		this.endDate = endDate;
 	}
 	public String getRaison() {
 		return raison;
@@ -52,6 +77,19 @@ public class TimeOff {
 	public void setRaison(String raison) {
 		this.raison = raison;
 	}
+	public Employee getEmployee() {
+		return employee;
+	}
+	public void setEmployee(Employee employee) {
+		this.employee = employee;
+	}
+	public Team getTeam() {
+		return team;
+	}
+	public void setTeam(Team team) {
+		this.team = team;
+	}
 
 
+	
 }

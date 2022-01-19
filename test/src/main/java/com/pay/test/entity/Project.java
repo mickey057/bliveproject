@@ -27,9 +27,8 @@ public class Project {
 	private Long budget;
 	@OneToMany(mappedBy = "project")
 	Set<ClientProject> clientProject;
-	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name ="idproject", referencedColumnName = "idproject")
-	public List<Team> team = new ArrayList<Team>();
+	@OneToMany(mappedBy = "project")
+	Set<Team> team ;
 	
 	public Project() {
 		super();
@@ -41,6 +40,10 @@ public class Project {
 		this.name = name;
 		this.budget = budget;
 	}
+	
+	
+
+
 	public Long getIdproject() {
 		return idproject;
 	}

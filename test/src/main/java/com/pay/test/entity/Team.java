@@ -26,6 +26,8 @@ public class Team {
 	@ManyToOne
 	@JoinColumn(name = "idproject")
 	public Project project;
+	@OneToMany(mappedBy = "team")
+	Set<TimeOff> timeOff;
 	
 	
 	public Team() {
@@ -36,6 +38,8 @@ public class Team {
 		this.idteam = idteam;
 		this.name = name;
 	}
+	
+	
 	public Long getIdteam() {
 		return idteam;
 	}
@@ -53,6 +57,10 @@ public class Team {
 	}
 	public void setProject(Project project) {
 		this.project = project;
+	}
+	@Override
+	public String toString() {
+		return   name;
 	}
 	
 	

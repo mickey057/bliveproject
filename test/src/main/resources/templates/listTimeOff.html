@@ -62,35 +62,37 @@
 						<a th:href="@{/listHoliday}" class="list-group-item list-group-item-action bg-light">list Holidays</a>
 				</div>
 				</div>
-
-    <div class="container my-2">
-        <h1>Team List</h1>
+<div class="container my-2">
+        <h1>TimeOff List</h1>
         
-        <a th:href="@{/team/new}" class="btn btn-primary btn-sm mb-3"> Add Team </a>
+        <a th:href="@{/timeOff/new}" class="btn btn-primary btn-sm mb-3"> Add TimeOff </a>
         
 
 
         <table border="1" class="table table-striped table-responsive-md">
             <thead>
                 <tr>
-                    <th>Team ID</th>
-                    <th>Team name</th>
-                    <th>Team project</th>
-                    
+                    <th>TimeOff ID</th>
+                    <th>Start date</th>
+                    <th>End date</th>
+                    <th>Raison</th>
+                    <th>Employee</th>
+                    <th>Team</th>
                    
                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
-               <tr th:each="team : ${listTeams}">
-                    <td th:text="${team.idteam}"></td>
-                    <td th:text="${team.name}"></td>
-                    <td th:text="${team.project}"></td>
-                    
-                    
+               <tr th:each="timeOff : ${listTimeOffs}">
+                    <td th:text="${timeOff.idtimeOff}"></td>
+                    <td th:text="${timeOff.startDate}"></td>
+                    <td th:text="${timeOff.endDate}"></td>
+                    <td th:text="${timeOff.raison}"></td>
+                    <td th:text="${timeOff.employee.name}"></td>
+                    <td th:text="${timeOff.team.name}"></td>
                   
-                   <td> <a th:href="@{'/team/update/' + ${team.idteam}}" >Edit</a>
-                        <a th:href="@{'/team/delete/' + ${team.idteam}}" >Delete</a> 
+                   <td> <a th:href="@{'/timeOff/update/' + ${timeOff.idtimeOff}}" >Edit</a>
+                        <a th:href="@{'/timeOff/delete/' + ${timeOff.idtimeOff}}" >Delete</a> 
                     </td>    
                 </tr>
             </tbody>
