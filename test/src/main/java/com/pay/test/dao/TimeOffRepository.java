@@ -5,6 +5,6 @@ import org.springframework.stereotype.Repository;
 import com.pay.test.entity.TimeOff;
 
 @Repository
-public interface timeOffRepository extends JpaRepository<TimeOff, Long> {
+public interface TimeOffRepository extends JpaRepository<TimeOff, Long> {
 
 }

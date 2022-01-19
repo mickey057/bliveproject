@@ -81,5 +81,10 @@ public class Employee {
 	public void setEnfant(int enfant) {
 		this.enfant = enfant;
 	}
+	@Override
+	public String toString() {
+		return  name ;
+	}
+	
 
 }

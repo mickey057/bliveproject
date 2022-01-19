@@ -63,34 +63,32 @@
 				</div>
 				</div>
 
-    <div class="container my-2">
-        <h1>Team List</h1>
+<div class="container my-2">
+        <h1>Profile List</h1>
         
-        <a th:href="@{/team/new}" class="btn btn-primary btn-sm mb-3"> Add Team </a>
+        <a th:href="@{/profile/new}" class="btn btn-primary btn-sm mb-3"> Add Profile </a>
         
 
 
         <table border="1" class="table table-striped table-responsive-md">
             <thead>
                 <tr>
-                    <th>Team ID</th>
-                    <th>Team name</th>
-                    <th>Team project</th>
+                    <th>Profile ID</th>
+                    <th>Profile name</th>
                     
                    
                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
-               <tr th:each="team : ${listTeams}">
-                    <td th:text="${team.idteam}"></td>
-                    <td th:text="${team.name}"></td>
-                    <td th:text="${team.project}"></td>
+               <tr th:each="profile : ${listProfiles}">
+                    <td th:text="${profile.idprofile}"></td>
+                    <td th:text="${profile.name}"></td>
                     
                     
                   
-                   <td> <a th:href="@{'/team/update/' + ${team.idteam}}" >Edit</a>
-                        <a th:href="@{'/team/delete/' + ${team.idteam}}" >Delete</a> 
+                   <td> <a th:href="@{'/profile/update/' + ${profile.idprofile}}" >Edit</a>
+                        <a th:href="@{'/profile/delete/' + ${profile.idprofile}}" >Delete</a> 
                     </td>    
                 </tr>
             </tbody>

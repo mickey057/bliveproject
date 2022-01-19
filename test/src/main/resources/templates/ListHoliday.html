@@ -62,35 +62,32 @@
 						<a th:href="@{/listHoliday}" class="list-group-item list-group-item-action bg-light">list Holidays</a>
 				</div>
 				</div>
-
-    <div class="container my-2">
-        <h1>Team List</h1>
+<div class="container my-2">
+        <h1>Holiday List</h1>
         
-        <a th:href="@{/team/new}" class="btn btn-primary btn-sm mb-3"> Add Team </a>
+        <a th:href="@{/holiday/new}" class="btn btn-primary btn-sm mb-3"> Add Holiday </a>
         
 
 
         <table border="1" class="table table-striped table-responsive-md">
             <thead>
                 <tr>
-                    <th>Team ID</th>
-                    <th>Team name</th>
-                    <th>Team project</th>
-                    
+                    <th>Holiday ID</th>
+                    <th>Start date</th>
+                    <th>End date</th>
                    
                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
-               <tr th:each="team : ${listTeams}">
-                    <td th:text="${team.idteam}"></td>
-                    <td th:text="${team.name}"></td>
-                    <td th:text="${team.project}"></td>
-                    
+               <tr th:each="holiday : ${listHolidays}">
+                    <td th:text="${holiday.idholidays}"></td>
+                    <td th:text="${holiday.startDate}"></td>
+                    <td th:text="${holiday.EndDate}"></td>
                     
                   
-                   <td> <a th:href="@{'/team/update/' + ${team.idteam}}" >Edit</a>
-                        <a th:href="@{'/team/delete/' + ${team.idteam}}" >Delete</a> 
+                   <td> <a th:href="@{'/holiday/update/' + ${holiday.idholidays}}" >Edit</a>
+                        <a th:href="@{'/holiday/delete/' + ${holiday.idholidays}}" >Delete</a> 
                     </td>    
                 </tr>
             </tbody>

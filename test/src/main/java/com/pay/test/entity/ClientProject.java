@@ -1,5 +1,7 @@
 package com.pay.test.entity;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,6 +10,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.springframework.format.annotation.DateTimeFormat;
 @Entity
 @Table(name = "client_project")
 public class ClientProject {
@@ -23,7 +29,15 @@ public class ClientProject {
 	@ManyToOne
 	@JoinColumn(name = "idproject")
 	Project project;
-
+	@Column(name = "start_date")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@Temporal(TemporalType.DATE)
+	private Date startDate;
+	@Column(name = "end_date")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@Temporal(TemporalType.DATE)
+	private Date endDate;
+	
 	public Long getIdclientProject() {
 		return idclientProject;
 	}
