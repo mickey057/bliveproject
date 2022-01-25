@@ -63,20 +63,46 @@
 						<a th:href="@{/listEmplProf}" class="list-group-item list-group-item-action bg-light">list employee and their team</a>
 				</div>
 				</div>
-			
-				
-				
-
- <div class="container my-2">
-        <h1>Pay system Management</h1>
+				<div class="container my-2">
+        <h1>Employee and their team List</h1>
         
-        <a th:href="@{/listEmployee}" class="btn btn-primary btn-sm mb-3"> List of Employee</a> 
-        <a th:href="@{/viewModule}" class="btn btn-primary btn-sm mb-3"> list of Module</a>
-        <a th:href="@{/listOperateur}" class="btn btn-primary btn-sm mb-3"> List Operateur</a>
-        <a th:href="@{/listAgent}" class="btn btn-primary btn-sm mb-3"> List Agents</a>
-     </div>
-     </div>
-				</div>
+        <a th:href="@{/emplProf/new}" class="btn btn-primary btn-sm mb-3"> Add EmplProf </a>
+        
 
+
+        <table border="1" class="table table-striped table-responsive-md">
+            <thead>
+                <tr>
+                    <th>EmplProf ID</th>
+                    <th>Date Created</th>
+                    <th>Profile type</th>
+                    <th>Employee</th>
+                    <th>Team</th>
+                   
+                   <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+               <tr th:each="emplProf : ${listEmplProfs}">
+                    <td th:text="${emplProf.idemplProf}"></td>
+                    <td th:text="${emplProf.dateCreated}"></td>
+                    <td th:text="${emplProf.profile.name}"></td>
+                    <td th:text="${emplProf.employee.name}"></td>
+                    <td th:text="${emplProf.team.name}"></td>
+                  
+                   <td> <a th:href="@{'/emplProf/update/' + ${emplProf.idemplProf}}" >Edit</a>
+                        <a th:href="@{'/emplProf/delete/' + ${emplProf.idemplProf}}" >Delete</a> 
+                    </td>    
+                </tr>
+            </tbody>
+        </table>
+        <hr>
+        <ul class="nav nav-pills ">
+        
+        </ul>
+    </div>
+    </div>
+				</div>
 </body>
+
 </html>
