@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html  lang="en" xmlns:th="http://www.thymeleaf.org" >
+
+<head>
+<meta charset="ISO-8859-1">
+<title>Pay system Management</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">  
+</head>
+<body>
+<div class="container">
+<div th:if="${emplProf.idemplProf == null}" ><h1 class="text-center"> EmplProf Register</h1></div>
+<div th:unless="${emplProf.idemplProf == null}" ><h1 class="text-center"> EmplProf UpDate</h1></div>
+<hr>
+<h2> Save EmplProf</h2>
+        <form action="#" th:action="@{/emplProf/save}" th:object="${emplProf}" method="POST">
+            <input type="hidden" th:field="*{idemplProf}" th:value="${emplProf.idemplProf}" />
+            <input type="text" th:field="*{dateCreated}" placeholder="date created" class="form-control mb-4 col-4" required="required">
+            
+	<select th:field="*{employee}" class="form-control mb-4 col-4" required >
+            <th:block th:each="employee : ${listEmployees}">
+            <option th:text="${employee.name}" th:value="${employee.idemployee}" />
+            </th:block>
+            </select>
+         <select th:field="*{team}" class="form-control mb-4 col-4" required >
+            <th:block th:each="team : ${listTeams}">
+            <option th:text="${team.name}" th:value="${team.idteam}" />
+            </th:block>
+            </select>
+	<select th:field="*{profile}" class="form-control mb-4 col-4" required >
+            <th:block th:each="profile : ${listProfiles}">
+            <option th:text="${profile.name}" th:value="${profile.idprofile}" />
+            </th:block>
+            </select>
+            <div class="form-group row">
+            
+            
+            
+            </div>
+            <button type="submit" class="btn btn-info col-2"> Save EmplProf</button>
+            </form>
+</div>
+
+</body>
+</html>
